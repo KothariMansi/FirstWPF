@@ -4,33 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstApp"
+        xmlns:userControls="clr-namespace:FirstApp.View.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <!-- Menu Bar -->
-        <Rectangle Grid.Row="0" Fill="CadetBlue"/>
-        
-        <!-- Content Pane -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="60*"/>
-                <ColumnDefinition Width="20*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Grid.Column="0" Fill="LightGray"/>
-            <Rectangle Grid.Column="1" Fill="Gray"/>
-            <Rectangle Grid.Column="2" Fill="DarkGray"/>
-
-
-        </Grid>
-
-        <!-- Footer -->
-        <Rectangle Grid.Row="2" Fill="DarkSeaGreen"/>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="70"/>
             <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+
+        <userControls:MenuBar/>
+
+
     </Grid>
 </Window>
