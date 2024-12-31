@@ -6,21 +6,18 @@
         xmlns:local="clr-namespace:FirstApp"
         xmlns:userControls="clr-namespace:FirstApp.View.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300">
+        Title="MainWindow" Height="250" Width="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <!--<userControls:MenuBar/>-->
-        <userControls:ClearableTextBox Grid.Row="1" Width="250" Height="40" Placeholder="First name"/>
-        <userControls:ClearableTextBox Grid.Row="2" Width="250" Height="40" Placeholder="Last name"/>
-        <userControls:ClearableTextBox Grid.Row="3" Width="250" Height="40" Placeholder="Email"/>
-        <userControls:ClearableTextBox Grid.Row="4" Width="250" Height="40" Placeholder="Contact"/>
+        <TextBox Grid.Row="0" Width="250" Height="40" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
+                 Name="txtInput" VerticalContentAlignment="Center" />
+        <Button Grid.Row="1" Width="100" Height="40" Content="Set" Name="btnSet" Click="btnSet_Click"/>
+        <TextBlock Grid.Row="2" Name="tbResult" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Text="{Binding BoundText}"/>
 
     </Grid>
 </Window>
