@@ -7,7 +7,7 @@ namespace FirstApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -16,31 +16,16 @@ namespace FirstApp
             
         }
 
-
-        private string boundText;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public string BoundText
+        private void btnFire_Click(object sender, RoutedEventArgs e)
         {
-            get { return boundText; }
-            set {
-                boundText = value;
-                // PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BoundText"));
-                // OnPropertyChanged("BoundText");
-                OnPropertyChanged(); // Do not need to write the string bcuz of the CallerMemberName
+            //MessageBox.Show("It was a success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBoxResult result = MessageBox.Show("Do you agree?", "Agreement", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes) { 
+                tbInfo.Text = "You agreed";
+            } else
+            {
+                tbInfo.Text = "You disagreed";
             }
-        }
-
-        private void btnSet_Click(object sender, RoutedEventArgs e)
-        {
-            BoundText = "Set from code!";
-
-        }
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }        
     }
 }

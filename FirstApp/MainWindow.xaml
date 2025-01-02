@@ -4,20 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstApp"
-        xmlns:userControls="clr-namespace:FirstApp.View.UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="250" Width="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Width="250" Height="40" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
-                 Name="txtInput" VerticalContentAlignment="Center" />
-        <Button Grid.Row="1" Width="100" Height="40" Content="Set" Name="btnSet" Click="btnSet_Click"/>
-        <TextBlock Grid.Row="2" Name="tbResult" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                   Text="{Binding BoundText}"/>
+        <Button Grid.Row="0" Width="100" Height="40" Content="Fire" Name="btnFire" Click="btnFire_Click"/>
+        <TextBlock Grid.Row="1" Name="tbInfo" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
     </Grid>
 </Window>
