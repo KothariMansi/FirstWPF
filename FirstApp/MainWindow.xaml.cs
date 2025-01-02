@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace FirstApp
 {
@@ -18,13 +19,22 @@ namespace FirstApp
 
         private void btnFire_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("It was a success", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            MessageBoxResult result = MessageBox.Show("Do you agree?", "Agreement", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes) { 
-                tbInfo.Text = "You agreed";
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "C# source file | *.cs| Pdf File | *.pdf";
+            fileDialog.InitialDirectory = @"C:\Users\";
+            fileDialog.Title = "Please select a .cs file";
+            fileDialog.Multiselect = true;
+
+
+            bool? success = fileDialog.ShowDialog();
+            if (success == true)
+            {
+                string[] paths = fileDialog.FileNames;
+                string[] fileNames = fileDialog.SafeFileNames;
+                
             } else
             {
-                tbInfo.Text = "You disagreed";
+
             }
         }        
     }
