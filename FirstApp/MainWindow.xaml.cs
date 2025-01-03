@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using Microsoft.Win32;
+﻿using System.Windows;
+using Winforms = System.Windows.Forms;
 
 namespace FirstApp
 {
@@ -19,22 +17,12 @@ namespace FirstApp
 
         private void btnFire_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "C# source file | *.cs| Pdf File | *.pdf";
-            fileDialog.InitialDirectory = @"C:\Users\";
-            fileDialog.Title = "Please select a .cs file";
-            fileDialog.Multiselect = true;
-
-
-            bool? success = fileDialog.ShowDialog();
-            if (success == true)
+            Winforms.FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.InitialDirectory = @"C:\Users\SHREE";
+            Winforms.DialogResult result = dialog.ShowDialog();
+            if (result == Winforms.DialogResult.OK)
             {
-                string[] paths = fileDialog.FileNames;
-                string[] fileNames = fileDialog.SafeFileNames;
-                
-            } else
-            {
-
+                tbInfo.Text = dialog.SelectedPath;
             }
         }        
     }
