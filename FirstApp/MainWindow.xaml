@@ -29,7 +29,7 @@
                 HorizontalAlignment="Center" Background="LightGray"/>
         
         
-        <ListView Name="lvEntries" Grid.RowSpan="3" Grid.Row="1" Margin="5" SelectionMode="Multiple"/>
+        <ListView Name="lvEntries" Grid.RowSpan="3" Grid.Row="1" Margin="5" SelectionMode="Single" ItemsSource="{Binding Entries}"/>
 
 
     </Grid>
