@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using Winforms = System.Windows.Forms;
+﻿using System.Collections;
+using System.Windows;
 
 namespace FirstApp
 {
@@ -10,20 +10,65 @@ namespace FirstApp
     {
         public MainWindow()
         {
-            DataContext = this;
             InitializeComponent();
-            
+            lvEntries.Items.Add("BMW");
         }
 
-        private void btnFire_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Winforms.FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.InitialDirectory = @"C:\Users\SHREE";
-            Winforms.DialogResult result = dialog.ShowDialog();
-            if (result == Winforms.DialogResult.OK)
+            if (txtEntry.Text != "")
             {
-                tbInfo.Text = dialog.SelectedPath;
+                lvEntries.Items.Add(txtEntry.Text);
+                txtEntry.Clear();
+                txtEntry.Focus();
+            } else
+            {
+                MessageBox.Show("Please enter a value", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtEntry.Focus();
             }
-        }        
+
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            lvEntries.Items.Clear();
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+
+            //int selectedIndex = lvEntries.SelectedIndex;
+            //if (selectedIndex != -1)
+            //{
+            //    lvEntries.Items.RemoveAt(selectedIndex);
+            //} else
+            //{
+            //    MessageBox.Show("Please select an item to delete", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+            //object selectedItem = lvEntries.SelectedItem;
+            //if (selectedItem != null)
+            //{
+            //    MessageBoxResult result = MessageBox.Show($"Are you Sure you want to delete: {(string)selectedItem}?", "Delete Item", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            //    if (result == MessageBoxResult.Yes)
+            //    {
+            //        lvEntries.Items.Remove(selectedItem);
+            //    }
+            //} else
+            //{
+            //    MessageBox.Show("Please select an item to delete", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+            var selectedItems = lvEntries.SelectedItems;//.Cast<object>().ToList();
+            MessageBoxResult result = MessageBox.Show($"Are you Sure you want to delete: {selectedItems.Count}?", "Delete Item", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes) {
+                var itemsList = new ArrayList(selectedItems);
+                foreach (var item in itemsList) {
+                    lvEntries.Items.Remove(item);
+                }
+            }
+            txtEntry.Focus();
+
+        }
     }
 }

@@ -5,14 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="600">
+        Title="MainWindow" Height="400" Width="400">
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="100" Height="40" Content="Fire" Name="btnFire" Click="btnFire_Click"/>
-        <TextBlock Grid.Row="1" Name="tbInfo" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Name="txtEntry" Height="35" FontSize="16" VerticalContentAlignment="Center" Margin="5"/>
+        
+        <Button Name="btnAdd" Grid.Column="1" Height="35" Width="50" Content="Add"
+                Click="btnAdd_Click" HorizontalAlignment="Center" Background="SeaGreen"/>
+        <Button Name="btnDel" Grid.Column="1" Grid.Row="1" Height="35" Width="50" Content="Delete" Click="btnDel_Click" 
+                HorizontalAlignment="Center" Background="Brown"/>
+        <Button Name="btnClear" Grid.Column="1" Grid.Row="2" Height="35" Width="50" Content="Clear" Click="btnClear_Click" 
+                HorizontalAlignment="Center" Background="LightGray"/>
+        
+        
+        <ListView Name="lvEntries" Grid.RowSpan="3" Grid.Row="1" Margin="5" SelectionMode="Multiple"/>
+
 
     </Grid>
 </Window>
